@@ -1,1 +1,1 @@
-# password_manager
+# KeeBox: a local password manager
