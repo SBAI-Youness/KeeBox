@@ -1,0 +1,196 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/raudio.o",
+      "../external/raylib-master/src/raudio.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/raudio.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/raudio.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rcore.o",
+      "../external/raylib-master/src/rcore.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rcore.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rcore.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rglfw.o",
+      "../external/raylib-master/src/rglfw.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rglfw.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rglfw.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rmodels.o",
+      "../external/raylib-master/src/rmodels.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rmodels.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rmodels.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rshapes.o",
+      "../external/raylib-master/src/rshapes.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rshapes.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rshapes.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rtext.o",
+      "../external/raylib-master/src/rtext.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rtext.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rtext.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/rtextures.o",
+      "../external/raylib-master/src/rtextures.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/rtextures.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/rtextures.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-g",
+      "-c",
+      "-o",
+      "obj/x64/Debug/raylib/utils.o",
+      "../external/raylib-master/src/utils.c"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/build/external/raylib-master/src/utils.c",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/raylib/utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-DDEBUG",
+      "-DPLATFORM_DESKTOP",
+      "-DGRAPHICS_API_OPENGL_33",
+      "-D_GLFW_X11",
+      "-D_GNU_SOURCE",
+      "-I../../src",
+      "-I../../include",
+      "-I../external/raylib-master/src",
+      "-I../external/raylib-master/src/external",
+      "-I../external/raylib-master/src/external/glfw/include",
+      "-m64",
+      "-Wshadow",
+      "-g",
+      "-std=c++17",
+      "-c",
+      "-o",
+      "obj/x64/Debug/KeeBox/main.o",
+      "../../src/main.cpp"
+    ],
+    "directory": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files",
+    "file": "/home/youness_sbai/GitHub/mine/KeeBox/src/main.cpp",
+    "output": "/home/youness_sbai/GitHub/mine/KeeBox/build/build_files/obj/x64/Debug/KeeBox/main.o"
+  }
+]
