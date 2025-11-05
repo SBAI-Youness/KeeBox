@@ -1,4 +1,5 @@
-#include "app.h"
+#include "app.hpp"
+#include "raylib.h"
 
 App::App()
     : window_width(DEFAULT_WINDOW_WIDTH), window_height(DEFAULT_WINDOW_HEIGHT), window_title(WINDOW_TITLE) {
@@ -9,7 +10,7 @@ App::App()
   InitWindow(window_width, window_height, window_title.c_str());
 
 	// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
-	SearchAndSetResourceDir("resources");
+	SearchAndSetResourceDir("assets");
 
   // Load a custom font
   font = LoadFont("fonts/Poppins-ExtraBold.ttf");
@@ -41,7 +42,7 @@ void App::render() {
 	BeginDrawing();
 
   // Clear screen with a red background
-	ClearBackground(RED);
+	ClearBackground(DARKGRAY);
 
   float fontSize = 50.0f;
   float fontSpacing = 2.0f;

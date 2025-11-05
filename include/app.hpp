@@ -2,7 +2,7 @@
 
 #include "raylib.h"
 #include "resource_dir.h"
-#include "config.h"
+#include "config.hpp"
 
 #include <string>
 

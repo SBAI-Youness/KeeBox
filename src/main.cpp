@@ -1,4 +1,4 @@
-#include "app.h"
+#include "app.hpp"
 
 int main() {
   // Create an instance of the application
