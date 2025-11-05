@@ -1,5 +1,7 @@
 #include "app.hpp"
+#include "config.hpp"
 #include "raylib.h"
+#include "ui/font_manager.hpp"
 
 App::App()
     : window_width(DEFAULT_WINDOW_WIDTH), window_height(DEFAULT_WINDOW_HEIGHT), window_title(WINDOW_TITLE) {
@@ -11,14 +13,11 @@ App::App()
 
 	// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
 	SearchAndSetResourceDir("assets");
-
-  // Load a custom font
-  font = LoadFont("fonts/Poppins-ExtraBold.ttf");
 }
 
 App::~App() {
   // Free memory used
-  UnloadFont(font);
+  FontManager::unload();
 
   // Destroy the window and cleanup the OpenGL context
   CloseWindow();
@@ -42,22 +41,18 @@ void App::render() {
 	BeginDrawing();
 
   // Clear screen with a red background
-	ClearBackground(DARKGRAY);
+	ClearBackground((Color) { 59, 59, 61, 255});
 
-  float fontSize = 50.0f;
-  float fontSpacing = 2.0f;
+  // Pick font by key
+  Font& title_font = FontManager::get("title");
 
-  // Measure text
-  Vector2 textSize = MeasureTextEx(font, WINDOW_TITLE, fontSize, fontSpacing);
+  // Responsive size
+  float font_size = window_width * 0.05f;
+  float spacing = font_size * 0.05f;
 
-  // Calculate center position
-  Vector2 textPosition = {
-      (window_width - textSize.x) / 2.0f,
-      (window_height - textSize.y) / 2.0f
-  };
+  Vector2 text_size = MeasureTextEx(title_font, window_title.c_str(), font_size, spacing);
 
-  // Draw centered window title text in white
-  DrawTextEx(font, WINDOW_TITLE, textPosition, fontSize, fontSpacing, RAYWHITE);
+  DrawTextEx(title_font, window_title.c_str(), (Vector2) { (window_width - text_size.x) * .5f, (window_height - text_size.y) *.5f}, font_size, spacing, WHITE);
 
 	EndDrawing();
 }

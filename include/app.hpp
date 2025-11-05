@@ -12,8 +12,6 @@ class App {
     int window_height;         // Current window height (updated on resize)
     std::string window_title;  // Window title text
 
-    Font font;                 // Font resource used for rendering text
-
     void update();             // Method used to update application state (e.g., window resize, logic)
     void render();             // Method used to handle all the drawing operations
 
