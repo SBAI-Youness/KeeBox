@@ -1,12 +1,21 @@
-#include "app.hpp"
+#include <stdio.h>
+#include "../include/tinyfiledialogs.h"
 
 int main() {
-  // Create an instance of the application
-  App app;
+    const char *filePath = tinyfd_openFileDialog(
+        "Select a file",   // title
+        "",                // default path
+        0,                 // number of filters
+        NULL,              // filters
+        NULL,              // description of filters
+        0                  // allow multiple selections?
+    );
 
-  // Start the main application loop
-  app.run();
+    if (filePath) {
+        printf("Selected file: %s\n", filePath);
+    } else {
+        printf("No file selected.\n");
+    }
 
-  // Exit program successfully
-  return 0;
+    return 0;
 }
