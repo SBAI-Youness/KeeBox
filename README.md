@@ -33,11 +33,18 @@ sudo yum localinstall ./keebox-*.rpm
 For development or other platforms:
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/SBAI-Youness/KeeBox.git
 cd KeeBox
+
+# 2. Create build directory
 mkdir build && cd build
+
+# 3. Compile
 cmake ..
 make -j$(nproc)
+
+# 4. Run
 ./KeeBox
 ```
 
