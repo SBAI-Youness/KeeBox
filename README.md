@@ -11,30 +11,37 @@ KeeBox is a secure, open-source password manager built with C++ and Qt. It uses 
 - 📂 **Local Storage**: Your passwords stay on your device.
 - ⚡ **Native Performance**: Fast and resource-efficient.
 
-## Prerequisites
-To build KeeBox, you need:
-- **C++17 Compiler** (GCC, Clang, or MSVC)
-- **CMake** (3.16+)
-- **Qt 6** (Widgets and SQL modules)
-- **SQLCipher** (Development headers: `libsqlcipher-dev` on Debian/Ubuntu)
+## Installation
 
-## Build & Run
+### RPM-based Linux (Fedora, RHEL, Rocky, AlmaLinux, openSUSE)
+
+Download the latest RPM from [Releases](https://github.com/SBAI-Youness/KeeBox/releases) and install:
 
 ```bash
-# 1. Clone the repository
+# Fedora, RHEL 8+, Rocky Linux, AlmaLinux
+sudo dnf install ./keebox-*.rpm
+
+# openSUSE
+sudo zypper install ./keebox-*.rpm
+
+# Older RHEL/CentOS
+sudo yum localinstall ./keebox-*.rpm
+```
+
+### Build from Source
+
+For development or other platforms:
+
+```bash
 git clone https://github.com/SBAI-Youness/KeeBox.git
 cd KeeBox
-
-# 2. Create build directory
 mkdir build && cd build
-
-# 3. Compile
 cmake ..
 make -j$(nproc)
-
-# 4. Run
 ./KeeBox
 ```
+
+**Requirements:** C++17 compiler, CMake 3.16+, Qt 6, SQLCipher
 
 ## License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.

@@ -1,0 +1,161 @@
+name: Build RPM Package
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-rpm:
+    name: Build RPM
+    runs-on: ubuntu-latest
+    
+    container:
+      image: fedora:42
+    
+    steps:
+    - name: Install dependencies
+      run: |
+        dnf install -y rpm-build rpmdevtools git cmake gcc-c++ make \
+          qt6-qtbase-devel qt6-qtbase-private-devel \
+          sqlcipher-devel pkgconfig nodejs
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup RPM build environment
+      run: rpmdev-setuptree
+        
+    - name: Create RPM spec file
+      run: |
+        BUILD_DATE=$(date "+%a %b %d %Y")
+        cat > ~/rpmbuild/SPECS/keebox.spec << EOF
+        Name:           keebox
+        Version:        0.1
+        Release:        1%{?dist}
+        Summary:        A secure, open-source password manager
+        
+        License:        MIT
+        URL:            https://github.com/SBAI-Youness/KeeBox
+        Source0:        %{name}-%{version}.tar.gz
+        
+        BuildRequires:  cmake >= 3.16
+        BuildRequires:  gcc-c++
+        BuildRequires:  qt6-qtbase-devel
+        BuildRequires:  sqlcipher-devel
+        BuildRequires:  pkgconfig
+        
+        Requires:       qt6-qtbase
+        Requires:       sqlcipher
+        
+        %description
+        KeeBox is a secure, open-source password manager built with C++ and Qt.
+        It uses SQLCipher (AES-256) to ensure your data is always encrypted at rest.
+        
+        %prep
+        %setup -q
+        
+        %build
+        %cmake
+        %cmake_build
+        
+        %install
+        %cmake_install
+        
+        # Install desktop file
+        mkdir -p %{buildroot}%{_datadir}/applications
+        cat > %{buildroot}%{_datadir}/applications/keebox.desktop << 'DESKTOP'
+        [Desktop Entry]
+        Type=Application
+        Name=KeeBox
+        Comment=Secure Password Manager
+        Exec=KeeBox
+        Icon=keebox
+        Terminal=false
+        Categories=Utility;Security;
+        DESKTOP
+        
+        # Install icon
+        mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
+        install -m 644 resources/logo/logo_350x350.png \
+          %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/keebox.png
+        
+        %files
+        %license LICENSE
+        %doc README.md
+        %{_bindir}/KeeBox
+        %{_datadir}/applications/keebox.desktop
+        %{_datadir}/icons/hicolor/256x256/apps/keebox.png
+        
+        %changelog
+        * ${BUILD_DATE} GitHub Actions <noreply@github.com> - 0.1-1
+        - Automated RPM build
+        EOF
+
+    - name: Create source tarball
+      run: |
+        mkdir -p ~/rpmbuild/SOURCES
+        tar --transform "s,^\.,keebox-0.1," \
+            --exclude='.git' \
+            --exclude='build' \
+            -czf ~/rpmbuild/SOURCES/keebox-0.1.tar.gz .
+
+    - name: Build RPM
+      run: rpmbuild -ba ~/rpmbuild/SPECS/keebox.spec
+
+    - name: Upload RPM artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: keebox-rpm
+        path: |
+          ~/rpmbuild/RPMS/*/*.rpm
+          ~/rpmbuild/SRPMS/*.rpm
+        retention-days: 30
+
+  create-release:
+    needs: build-rpm
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: artifacts/**/*.rpm
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        body: |
+          ## Installation
+          
+          ### RPM-based Distributions
+          
+          Works on: **Fedora, RHEL, Rocky Linux, AlmaLinux, openSUSE, CentOS Stream**
+          
+          ```bash
+          # Install with dnf (Fedora, RHEL 8+, Rocky, AlmaLinux)
+          sudo dnf install ./keebox-*.rpm
+          
+          # Install with zypper (openSUSE)
+          sudo zypper install ./keebox-*.rpm
+          
+          # Install with yum (older RHEL/CentOS)
+          sudo yum localinstall ./keebox-*.rpm
+          ```
+          
+          ### Dependencies
+          - Qt 6 (qt6-qtbase)
+          - SQLCipher
